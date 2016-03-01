@@ -53,10 +53,10 @@ def signup(request):
 	WaitVerify.objects.create(email=email, code=code)
 
 	sbj = 'Registration'
-	msg = URL + '/verify/' + code
-	frm = email
+	html = '<a href="' + URL + '/verify/' + code + '">Verify link</a>'
+	frm = 'info@localhost'
 	to = [email]
-	send_mail(sbj, msg, frm, to)
+	send_mail(sbj, '', frm, to, html_message=html)
 
 	res = json.dumps({
 		'message': 'Register success'
